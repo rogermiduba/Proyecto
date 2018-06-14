@@ -6,10 +6,6 @@ anho = int(time.strftime("%y"))
 
 print("La fecha es: %d/%d/%d" %(dia,mes,anho))
 
-#dia de la oferta
-d = random.randint(dia,30)
-print("Fecha de oferta: %d/%d/%d" %(d,mes,anho))
-
 print("Bienvenido a compra rápido")
 print("1. Ingresar \n2. Crear cuenta ")
 opcion = int(input())
@@ -100,3 +96,98 @@ while opcion == 2:
     else:
         print("El usuario y/o contraseña incorrecto ")
     break
+
+#productos
+galletas = {'Oreo':0.80,'Ritz':1.0,'San Jorge':0.80,'Intergrakers':0.70,'Casio':0.70,'Field':0.7}
+bebidas = {'Coca Cola 500mL':2.50,'Inka Cola 500mL':2.50,'Agua San Mateo 650 mL':1.50,'Gatorade 500mL':2.50}
+abarrotes = {'arroz':2.40,'azucar':3.50,'fideos':2.50,'atun filete':5.50,'harina':4.50,'quinua':8.00,'frejol':9.00,'lenteja':8.00,'pan integral':0.25,'Trident':1.20}
+electro = {'Iphone 7s':2500,'Mackbook Pro':4500,'Lavadora LG':2500,'Samsung LED 50 UHD 4K':1600}
+fruta = {'arandanos':4.50,'fresa':15.00,'platano':2.50,'manzana':5.00,'pera':6.00,'naranja':3.50}
+verdura = {'zanahoria':1.50,'pepinillo':2.00,'tomate':3.50,'papa':2.50,'camote':2.00,'choclo':1.50}
+
+#destinos
+
+lugares = {'Barranco':0,'Surco':5,'Chorrillos':10,'Miraflores':5}
+
+#forma de pago
+
+def en_tienda():
+    return
+
+def tarjeta():
+    return
+
+#pedido
+print("g. Galletas\nb. Bebidas\na. Abarrotes\ne. Electro\nf. Fruta\nv. Verduras")
+categoria = str(input("Categoria del producto: "))
+
+if categoria == "g":
+    print("Contamos con: ",galletas)
+    pedido = str(input("Ingrese el producto: "))
+    cantidad = int(input("Ingrese la cantidad: "))
+    for p in galletas:
+        product = str(p)
+        price = float(galletas[p])
+        if pedido == product:
+            t_galletas = cantidad*price
+            print(t_galletas)
+
+elif categoria == "b":
+    print("Contamos con: ",bebidas)
+    pedido = str(input("Ingrese el producto: "))
+    cantidad = int(input("Ingrese la cantidad: "))
+    for p in bebidas:
+        product = str(p)
+        price = float(bebidas[p])
+        if pedido == product:
+            t_bebidas = cantidad*price
+            print(t_bebidas)
+
+elif categoria == "a":
+    print("Contamos con: ",abarrotes)
+    pedido = str(input("Ingrese el producto: "))
+    cantidad = int(input("Ingrese la cantidad: "))
+    for p in abarrotes:
+        product = str(p)
+        price = float(abarrotes[p])
+        if pedido == product:
+            t_abarrotes = cantidad*price
+            print(t_abarrotes)
+
+elif categoria == "e":
+    print("Contamos con: ",electro)
+    pedido = str(input("Ingrese el producto: "))
+    cantidad = int(input("Ingrese la cantidad: "))
+    for p in electro:
+        product = str(p)
+        price = float(electro[p])
+        if pedido == product:
+            t_electro = cantidad*price
+            print(t_electro)
+
+elif categoria == "f":
+    print("Contamos con: ",fruta)
+    pedido = str(input("Ingrese el producto: "))
+    cantidad = int(input("Ingrese la cantidad: "))
+    for p in fruta:
+        product = str(p)
+        price = float(fruta[p])
+        if pedido == product:
+            t_fruta = cantidad*price
+            print(t_fruta)
+
+elif categoria == "v":
+    print("Contamos con: ",verdura)
+    pedido = str(input("Ingrese el producto: "))
+    cantidad = int(input("Ingrese la cantidad: "))
+    for p in verdura:
+        product = str(p)
+        price = float(verdura[p])
+        if pedido == product:
+            t_verdura = cantidad*price
+            print(t_verdura)
+
+#dia de la oferta
+d = random.randint(dia,30)
+print("Fecha de oferta: %d/%d/%d" %(d,mes,anho))
+print("Ubícanos en Av. Nicolas de Pierola 430, Barranco, Lima")
