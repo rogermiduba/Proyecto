@@ -1,1 +1,23 @@
+import random, time, math
+
+print("Bienvenido a compra rápido")
+print("Ingresar cuenta (1) o crear cuenta (2)")
+x=int(input())
+
+if x==1:
+    y=str(input("Escribir correo o usuario: "))
+    z=str(input("Escribir contraseña: "))
+while x==2:
+    for i in range(3):
+        y=str(input("Escribir correo: "))
+        z=str(input("Escribir nombre de usuario: "))
+        a=str(input("Escribir una contraseña: "))
+        b=str(input("Repetir la contraseña: "))
+        if a==b:
+            print("Cuenta creada")
+            break
+        else:
+            print("Contraseña incorrecta")
+    break
+
 
