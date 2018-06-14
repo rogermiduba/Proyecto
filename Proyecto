@@ -1,23 +1,102 @@
 import random, time, math
 
+dia = int(time.strftime("%d"))
+mes = int(time.strftime("%m"))
+anho = int(time.strftime("%y"))
+
+print("La fecha es: %d/%d/%d" %(dia,mes,anho))
+
+#dia de la oferta
+d = random.randint(dia,30)
+print("Fecha de oferta: %d/%d/%d" %(d,mes,anho))
+
 print("Bienvenido a compra rápido")
-print("Ingresar cuenta (1) o crear cuenta (2)")
-x=int(input())
+print("1. Ingresar \n2. Crear cuenta ")
+opcion = int(input())
 
-if x==1:
-    y=str(input("Escribir correo o usuario: "))
-    z=str(input("Escribir contraseña: "))
-while x==2:
+usuarios = []
+
+if opcion == 1:
+    correo = str(input("Usuario: "))
+    password = str(input("Contraseña: "))
+    N = "0123456789"
+    L = "abcdefghijklmnopqrstuvwxyz"
+    M = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    c = 0
+    for i in password:
+        if i in N:
+            c+= 1
+    l = 0
+    for i in password:
+        if i in L:
+            l+= 1
+    m = 0
+    for i in password:
+        if i in M:
+           m+= 1
+    if c == 0 or l == 0 or m == 0:
+        print("Contraseña incorrecta (recuerde que lleva: números, mayúsculas y minúsculas) ")
+    else:
+        print("------ Bienvenido %s ------\n ***Disfruta de tus compras*** " %correo)
+
+while opcion == 2:
     for i in range(3):
-        y=str(input("Escribir correo: "))
-        z=str(input("Escribir nombre de usuario: "))
-        a=str(input("Escribir una contraseña: "))
-        b=str(input("Repetir la contraseña: "))
-        if a==b:
-            print("Cuenta creada")
-            break
+        arroba="@"
+        a=0
+        nuevo_correo = str(input("Escribir correo: "))
+        usuario = str(input("Escribir nombre de usuario: "))
+        contra = str(input("Escribir una contraseña: "))
+        nueva_contra = str(input("Repetir la contraseña: "))
+        for i in nuevo_correo:
+                if i in arroba:
+                    a+=1
+        if a == 0:
+            print("No es un correo válido")
+        elif contra == nueva_contra:
+            N="0123456789"
+            L="abcdefghijklmnopqrstuvwxyz"
+            M="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+            c=0
+            for i in contra:
+                if i in N:
+                    c+=1
+            l=0
+            for i in contra:
+                if i in L:
+                    l+=1
+            m=0
+            for i in contra:
+                if i in M:
+                    m+=1
+
+            if c == 0 or l == 0 or m == 0:
+                print("Contraseña no segura, sirvase usar números, mayúsculas y minúsculas ")
+            else:
+                print("¡¡¡En hora buena, ahora es parte de la familia Compra Rápido!!!")
+                usuarios.append(usuario)
+                usuarios.append(nueva_contra)
+                break
         else:
-            print("Contraseña incorrecta")
+            print("Compruebe la contraseña")
+
+    users = {usuarios[0]:usuarios[1]}
+    contrasena_comprobacion = ""
+    usuario_comprobacion = ""
+    for keys in users:
+        usuario_comprobacion = str(keys)
+        contrasena_comprobacion = str(users[keys])
+
+    print()
+    print("Ingresa a compra rápido")
+    print()
+    print("Ingresar la cuenta")
+    print()
+    correo=str(input("Usuario: "))
+    password=str(input("Contraseña: "))
+
+    if correo == usuario_comprobacion and password == contrasena_comprobacion:
+        print("------ Bienvenido %s ------\n ***Disfruta de tus compras*** " %correo)
+    else:
+        print("El usuario y/o contraseña incorrecto ")
     break
-
-
