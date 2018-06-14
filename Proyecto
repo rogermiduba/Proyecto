@@ -119,73 +119,92 @@ def tarjeta():
 
 #pedido
 print("g. Galletas\nb. Bebidas\na. Abarrotes\ne. Electro\nf. Fruta\nv. Verduras")
-categoria = str(input("Categoria del producto: "))
+print("¿En cuántas categorias comprará?")
+n_cate=int(input("Indique el número de categorias a comprar: "))
 
-if categoria == "g":
-    print("Contamos con: ",galletas)
-    pedido = str(input("Ingrese el producto: "))
-    cantidad = int(input("Ingrese la cantidad: "))
-    for p in galletas:
-        product = str(p)
-        price = float(galletas[p])
-        if pedido == product:
-            t_galletas = cantidad*price
-            print(t_galletas)
+gastos = 0
 
-elif categoria == "b":
-    print("Contamos con: ",bebidas)
-    pedido = str(input("Ingrese el producto: "))
-    cantidad = int(input("Ingrese la cantidad: "))
-    for p in bebidas:
-        product = str(p)
-        price = float(bebidas[p])
-        if pedido == product:
-            t_bebidas = cantidad*price
-            print(t_bebidas)
+for i in range(n_cate):
+    categoria = str(input("Categoria del producto: "))
+    if categoria == "g":
+        print("Contamos con: ",galletas)
+        numero = int(input("Indique el número de compras a realizar en esta categoria: "))
+        for i in range(numero):
+            pedido = str(input("Ingrese el producto: "))
+            cantidad = int(input("Ingrese la cantidad: "))
+            for p in galletas:
+                product = str(p)
+                price = float(galletas[p])
+                if pedido == product:
+                    t = cantidad*price
+                    print('Los gastos en galletas fue de %f' %t)
 
-elif categoria == "a":
-    print("Contamos con: ",abarrotes)
-    pedido = str(input("Ingrese el producto: "))
-    cantidad = int(input("Ingrese la cantidad: "))
-    for p in abarrotes:
-        product = str(p)
-        price = float(abarrotes[p])
-        if pedido == product:
-            t_abarrotes = cantidad*price
-            print(t_abarrotes)
+    elif categoria == "b":
+        print("Contamos con: ",bebidas)
+        numero = int(input("Indique el número de compras a realizar en esta categoria: "))
+        for i in range(numero):
+            pedido = str(input("Ingrese el producto: "))
+            cantidad = int(input("Ingrese la cantidad: "))
+            for p in bebidas:
+                product = str(p)
+                price = float(bebidas[p])
+                if pedido == product:
+                    t = cantidad*price
+                    print("Los gastos en bebidas fue de %f" %t)
 
-elif categoria == "e":
-    print("Contamos con: ",electro)
-    pedido = str(input("Ingrese el producto: "))
-    cantidad = int(input("Ingrese la cantidad: "))
-    for p in electro:
-        product = str(p)
-        price = float(electro[p])
-        if pedido == product:
-            t_electro = cantidad*price
-            print(t_electro)
+    elif categoria == "a":
+        print("Contamos con: ",abarrotes)
+        numero = int(input("Indique el número de compras a realizar en esta categoria: "))
+        for i in range(numero):
+            pedido = str(input("Ingrese el producto: "))
+            cantidad = int(input("Ingrese la cantidad: "))
+            for p in abarrotes:
+                product = str(p)
+                price = float(abarrotes[p])
+                if pedido == product:
+                    t= cantidad*price
+                    print(" Los gastos en abarrotes fue de %f " %t)
 
-elif categoria == "f":
-    print("Contamos con: ",fruta)
-    pedido = str(input("Ingrese el producto: "))
-    cantidad = int(input("Ingrese la cantidad: "))
-    for p in fruta:
-        product = str(p)
-        price = float(fruta[p])
-        if pedido == product:
-            t_fruta = cantidad*price
-            print(t_fruta)
+    elif categoria == "e":
+        print("Contamos con: ",electro)
+        numero = int(input("Indique el número de compras a realizar en esta categoria: "))
+        for i in range(numero):
+            pedido = str(input("Ingrese el producto: "))
+            cantidad = int(input("Ingrese la cantidad: "))
+            for p in electro:
+                product = str(p)
+                price = float(electro[p])
+                if pedido == product:
+                    t = cantidad*price
+                    print("Los gastos en electro fue de %f"%t)
 
-elif categoria == "v":
-    print("Contamos con: ",verdura)
-    pedido = str(input("Ingrese el producto: "))
-    cantidad = int(input("Ingrese la cantidad: "))
-    for p in verdura:
-        product = str(p)
-        price = float(verdura[p])
-        if pedido == product:
-            t_verdura = cantidad*price
-            print(t_verdura)
+    elif categoria == "f":
+        print("Contamos con: ",fruta)
+        numero = int(input("Indique el número de compras a realizar en esta categoria: "))
+        for i in range(numero):
+            pedido = str(input("Ingrese el producto: "))
+            cantidad = int(input("Ingrese la cantidad: "))
+            for p in fruta:
+                product = str(p)
+                price = float(fruta[p])
+                if pedido == product:
+                    t = cantidad*price
+                    print("Los gastos en fruta fue de %f" %t)
+
+    elif categoria == "v":
+        print("Contamos con: ",verdura)
+        numero = int(input("Indique el número de compras a realizar en esta categoria: "))
+        for i in range(numero):
+            pedido = str(input("Ingrese el producto: "))
+            cantidad = int(input("Ingrese la cantidad: "))
+            for p in verdura:
+                product = str(p)
+                price = float(verdura[p])
+                if pedido == product:
+                    t = cantidad*price
+                    print('Los gasto en verduras fue de %f' %t)
+
+#Gasto total
 
 #dia de la oferta
 d = random.randint(dia,30)
