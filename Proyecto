@@ -1,5 +1,7 @@
 import random, time, math
+from tkinter import *
 
+#fecha actual
 dia = int(time.strftime("%d"))
 mes = int(time.strftime("%m"))
 anho = int(time.strftime("%y"))
@@ -122,7 +124,7 @@ print("g. Galletas\nb. Bebidas\na. Abarrotes\ne. Electro\nf. Fruta\nv. Verduras"
 print("¿En cuántas categorias comprará?")
 n_cate=int(input("Indique el número de categorias a comprar: "))
 
-gastos = 0
+gastos = []
 
 for i in range(n_cate):
     categoria = str(input("Categoria del producto: "))
@@ -138,6 +140,7 @@ for i in range(n_cate):
                 if pedido == product:
                     t = cantidad*price
                     print('Los gastos en galletas fue de %f' %t)
+                    gastos.append(t)
 
     elif categoria == "b":
         print("Contamos con: ",bebidas)
@@ -151,19 +154,21 @@ for i in range(n_cate):
                 if pedido == product:
                     t = cantidad*price
                     print("Los gastos en bebidas fue de %f" %t)
+                    gastos.append(t)
 
     elif categoria == "a":
         print("Contamos con: ",abarrotes)
         numero = int(input("Indique el número de compras a realizar en esta categoria: "))
         for i in range(numero):
             pedido = str(input("Ingrese el producto: "))
-            cantidad = int(input("Ingrese la cantidad: "))
+            cantidad = float(input("Ingrese la cantidad: "))
             for p in abarrotes:
                 product = str(p)
                 price = float(abarrotes[p])
                 if pedido == product:
                     t= cantidad*price
                     print(" Los gastos en abarrotes fue de %f " %t)
+                    gastos.append(t)
 
     elif categoria == "e":
         print("Contamos con: ",electro)
@@ -177,36 +182,68 @@ for i in range(n_cate):
                 if pedido == product:
                     t = cantidad*price
                     print("Los gastos en electro fue de %f"%t)
+                    gastos.append(t)
 
     elif categoria == "f":
         print("Contamos con: ",fruta)
         numero = int(input("Indique el número de compras a realizar en esta categoria: "))
         for i in range(numero):
             pedido = str(input("Ingrese el producto: "))
-            cantidad = int(input("Ingrese la cantidad: "))
+            cantidad = float(input("Ingrese la cantidad: "))
             for p in fruta:
                 product = str(p)
                 price = float(fruta[p])
                 if pedido == product:
                     t = cantidad*price
                     print("Los gastos en fruta fue de %f" %t)
+                    gastos.append(t)
 
     elif categoria == "v":
         print("Contamos con: ",verdura)
         numero = int(input("Indique el número de compras a realizar en esta categoria: "))
         for i in range(numero):
             pedido = str(input("Ingrese el producto: "))
-            cantidad = int(input("Ingrese la cantidad: "))
+            cantidad = float(input("Ingrese la cantidad: "))
             for p in verdura:
                 product = str(p)
                 price = float(verdura[p])
                 if pedido == product:
                     t = cantidad*price
                     print('Los gasto en verduras fue de %f' %t)
+                    gastos.append(t)
 
 #Gasto total
 
+print()
+total = 0
+for i in gastos:
+   total+=i
+
+print("El monto a pagar es %f" %total)
+
+#Monto con el que pago
+monto = float(input("¿Con cuanto pagará?\nIngrese monto: "))
+
+#vuelto
+vuelto = float(monto-total)
+print("Su vuelto es %f"%vuelto)
 #dia de la oferta
+
+print()
 d = random.randint(dia,30)
 print("Fecha de oferta: %d/%d/%d" %(d,mes,anho))
+print()
 print("Ubícanos en Av. Nicolas de Pierola 430, Barranco, Lima")
+
+#ventana de Ingreso
+ingreso = Tk()
+user = StringVar()
+password = StringVar()
+ingreso.title("Compras rápidas")
+ingreso.geometry("280x100")
+Usuario = Label(ingreso,text="Usuario").place(x=10,y=10)
+userbox = Entry(ingreso,textvariable=user).place(x=120, y=10)
+Password = Label(ingreso,text="Contraseña").place(x=10,y=40)
+passwordbox = Entry(ingreso,textvariable=password).place(x=120,y=40)
+ingresar = Button(ingreso,text="Ingresar").place(x=120,y=70)
+ingreso.mainloop()
