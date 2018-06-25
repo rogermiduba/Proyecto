@@ -235,75 +235,80 @@ print("Fecha de oferta: %d/%d/%d" %(d,mes,anho))
 print()
 print("Ubícanos en Av. Nicolas de Pierola 430, Barranco, Lima")
 
-#ventana de Ingreso
-ingreso = Tk()
-user = StringVar()
-password = StringVar()
-ingreso.title("Compras rápidas")
-ingreso.geometry("280x100")
-Usuario = Label(ingreso,text="Usuario").place(x=10,y=10)
-userbox = Entry(ingreso,textvariable=user).place(x=120, y=10)
-Password = Label(ingreso,text="Contraseña").place(x=10,y=40)
-passwordbox = Entry(ingreso,textvariable=password).place(x=120,y=40)
-ingresar = Button(ingreso,text="Ingresar").place(x=120,y=70)
-ingreso.mainloop()
+#Ventana inicial
 
-
-#ventana inicial
 from tkinter import*
 from tkinter import ttk, font
 import getpass
-ventana = Tk()
-ventana.geometry("1200x1200")
-ventana.maxsize(400,400)
-ventana.title("tienda online")
 
-letra=font.Font(weight="bold")
-usuario=Label(ventana,text="Usuario",font=letra).place(x=10, y=10)
-contrasena = Label(ventana,text="Contraseña",font=letra).place(x=10, y=40)
+#Inicio
 
-user = StringVar()
-password = StringVar()
+def primer_ventana():
+    menu.withdraw()
+    ventana = Toplevel(menu)
+    ventana.geometry("1200x1200")
+    ventana.maxsize(400,400)
+    ventana.title("tienda online")
 
-user.set(getpass.getuser())
+    letra=font.Font(weight="bold")
+    usuario=Label(ventana,text="Usuario",font=letra).place(x=10, y=10)
+    contrasena = Label(ventana,text="Contraseña",font=letra).place(x=10, y=40)
 
-userbox = Entry(ventana,textvariable=user).place(x=120, y=10)
-passwordbox = Entry(ventana,textvariable=password).place(x=120,y=40)
+    user = StringVar()
+    password = StringVar()
+
+    user.set(getpass.getuser())
+
+    userbox = Entry(ventana,textvariable=user).place(x=120, y=10)
+    passwordbox = Entry(ventana,textvariable=password).place(x=120,y=40)
 
 
-def aceptar():
-    N = "0123456789"
-    L = "abcdefghijklmnopqrstuvwxyz"
-    M = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    def aceptar():
+        N = "0123456789"
+        L = "abcdefghijklmnopqrstuvwxyz"
+        M = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-    c = 0
-    for i in password.get():
-        if i in N:
-            c += 1
-    l = 0
-    for i in password.get():
-        if i in L:
-            l += 1
-    m = 0
-    for i in password.get():
-        if i in M:
-            m += 1
-    if c == 0 or l == 0 or m == 0 or len(password.get())<6:
-        message1=Label(ventana,text="Contraseña incorrecta (necesita: num, may, min y 6 carac)").place(x=10,y=150)
-        message2=Label(ventana,text="Acceso denegado").place(x=60,y=110)
-        password.set("")
+        c = 0
+        for i in password.get():
+            if i in N:
+                c += 1
+        l = 0
+        for i in password.get():
+            if i in L:
+                l += 1
+        m = 0
+        for i in password.get():
+            if i in M:
+                m += 1
+        if c == 0 or l == 0 or m == 0 or len(password.get())<6:
+            message1=Label(ventana,text="Contraseña incorrecta (necesita: num, may, min y 6 carac)").place(x=10,y=150)
+            message2=Label(ventana,text="Acceso denegado").place(x=60,y=110)
+            password.set("")
+            user.set("")
+        else:
+            print("Bienvenido")
+            print("Acceso autorizado")
+
+    def cancel():
         user.set("")
-    else:
-        print("Bienvenido")
-        print("Acceso autorizado")
+        password.set("")
 
-def cancel():
-    user.set("")
-    password.set("")
+    ingresar = Button(ventana,text="Ingresar",command=aceptar).place(x=120,y=70)
+    cancelar = Button(ventana,text="Cancelar",command=cancel).place(x=240,y=70)
 
-ingresar = Button(ventana,text="Ingresar",command=aceptar).place(x=120,y=70)
-cancelar = Button(ventana,text="Cancelar",command=cancel).place(x=240,y=70)
+    #verificar password
 
-#verificar password
+    ventana.mainloop()
+    return ventana, ingresar, cancelar
 
-ventana.mainloop()
+menu = Tk()
+menu.geometry('400x450')
+menu.configure(background="dark cyan")
+menu.title("Compras Rápidas")
+Fuente = font.Font(family = "Garamond",size = 15, weight = "bold")
+Title = font.Font(family = "Times",size = 50, weight = "bold")
+Nombre1 = Label(menu,text="Compras",font=Title,fg="White",bg="dark cyan").place(x=50, y=50)
+Nombre2 = Label(menu,text="Rápidas",font=Title,fg="White",bg="dark cyan").place(x=65.5, y=150)
+nuevo = Button(menu,text="Crear una cuenta",font=Fuente,command=primer_ventana).place(x=60,y=350)
+ingreso = Button(menu,text="Ingresar",font=Fuente,command=primer_ventana).place(x=240,y=350)
+menu.mainloop()
