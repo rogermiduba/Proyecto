@@ -80,7 +80,7 @@ def abrirventana2():
          root2.destroy()
 
     def reset():
-        date.set(time.strftime("%d/%m/%Y"))
+        date.set(datetime.time("%d/%m/%Y"))
         PaidTax.set("")
         SubTotal.set("")
         Totalcost.set("")
@@ -280,67 +280,80 @@ def abrirventana2():
         hora=int(ahora.hour)
         minuto=int(ahora.minute)
         segundo=int(ahora.second)
-        agendadate.append([segundo,minuto,hora,dia,mes,año,url])
+        agendadate.append([segundo,minuto,hora,dia,mes,año])
         global TCost
         TCost=(preciodebebidas+precioape+TT)
         Totalcost.set(TCost)
         agenda.append([agendadate,TCost])
         if mes==1:
-            enero.append([segundo,minuto,hora,dia,mes,año,url])
+            enero.append([segundo,minuto,hora,dia,mes,año])
         if mes==2:
-            febrero.append([segundo,minuto,hora,dia,mes,año,url])
+            febrero.append([segundo,minuto,hora,dia,mes,año])
         if mes==3:
-            marzo.append([segundo,minuto,hora,dia,mes,año,url])
+            marzo.append([segundo,minuto,hora,dia,mes,año])
         if mes==4:
-            abril.append([segundo,minuto,hora,dia,mes,año,url])
+            abril.append([segundo,minuto,hora,dia,mes,año])
         if mes==5:
-            mayo.append([segundo,minuto,hora,dia,mes,año,url])
+            mayo.append([segundo,minuto,hora,dia,mes,año])
         if mes==6:
-            junio.append([segundo,minuto,hora,dia,mes,año,url])
+            junio.append([segundo,minuto,hora,dia,mes,año])
         if mes==7:
-            julio.append([segundo,minuto,hora,dia,mes,año,url])
+            julio.append([segundo,minuto,hora,dia,mes,año])
         if mes==8:
-           agosto.append([segundo,minuto,hora,dia,mes,año,url])
+           agosto.append([segundo,minuto,hora,dia,mes,año])
         if mes==9:
-            septiembre.append([segundo,minuto,hora,dia,mes,año,url])
+            septiembre.append([segundo,minuto,hora,dia,mes,año])
         if mes==10:
-            octubre.append([segundo,minuto,hora,dia,mes,año,url])
+            octubre.append([segundo,minuto,hora,dia,mes,año])
         if mes==11:
-            noviembre.append([segundo,minuto,hora,dia,mes,año,url])
+            noviembre.append([segundo,minuto,hora,dia,mes,año])
         if mes==12:
-           diciembre.append([segundo,minuto,hora,dia,mes,año,url])
+           diciembre.append([segundo,minuto,hora,dia,mes,año])
 
 
 
-    def RECIBO():
-        txtrecibido.delete("1.0",END)
-        x=random.randint(1000000,99999999)
-        randomRef=str(x)
-        global url
-        url=int(randomRef)
-        Recibo_Ref.set("URL"+randomRef)
+    def DATA():
+        root2.destroy()
+        root3=Tk()
+        root3.title('Consulta sobre la data')
+        root3.geometry('1350x750+0+0')
+        root3.config(bg="Dark cyan")
 
-        txtrecibido.insert(END,"Recibo RUC:\t\t\t"+Recibo_Ref.get()+"\t\t"+date.get()+"\n")
-        txtrecibido.insert(END,"ITEMS:\t\t\t\t\t"+"Costo de items \n\n")
-        txtrecibido.insert(END,"Jugo de Mango:\t\t\t\t"+E_Mango.get()+"\n")
-        txtrecibido.insert(END,"Jugo de Piña:\t\t\t\t"+E_piña.get()+"\n")
-        txtrecibido.insert(END,"Jugo de Fresa:\t\t\t\t"+E_fresa.get()+"\n")
-        txtrecibido.insert(END,"Jugo de Papaya:\t\t\t\t"+E_papaya.get()+"\n")
-        txtrecibido.insert(END,"Jugo de Plátano:\t\t\t\t"+E_platano.get()+"\n")
-        txtrecibido.insert(END,"Jugo de Kiwi:\t\t\t\t"+E_kiwi.get()+"\n")
-        txtrecibido.insert(END,"Surtido:\t\t\t\t"+E_surtido.get()+"\n")
-        txtrecibido.insert(END,"Especial:\t\t\t\t"+E_especial.get()+"\n")
-        txtrecibido.insert(END,"Pastel de chocolate:\t\t\t\t"+E_choco.get()+"\n")
-        txtrecibido.insert(END,"Pie de manzana/durazno:\t\t\t\t"+E_pie.get()+"\n")
-        txtrecibido.insert(END,"Hamburguesa:\t\t\t\t"+E_hamb.get()+"\n")
-        txtrecibido.insert(END,"Sandwich de pollo:\t\t\t\t"+E_sand.get()+"\n")
-        txtrecibido.insert(END,"Bolognesa:\t\t\t\t"+E_bolog.get()+"\n")
-        txtrecibido.insert(END,"Pie acaramelado de Piña:\t\t\t\t"+E_piñas+"\n")
-        txtrecibido.insert(END,"Ensalada de fruta:\t\t\t\t"+E_fruta.get()+"\n")
-        txtrecibido.insert(END,"Menu del dia:\t\t\t\t"+E_menu()+"\n")
-        txtrecibido.insert(END,"Costos de bebidas:\t\t"+Costodrink.get()+ "\tIGV:\t\t"+PaidTax.get()+"\n")
-        txtrecibido.insert(END,"Costos de aperitivos:\t\t"+Costotorta.get()+ "\tSub Total:\t\t"+SubTotal.get()+"\n")
-        txtrecibido.insert(END,"Cargo por servicios:\t\t"+Serviciocargo.get()+ "\tCosto Total:\t\t"+Totalcost.get()+"\n")
+        Tops=Frame(root3, width=1350, height=100, bd=14, relief="raise")
+        Tops.pack(side=TOP)
+
+        def recibo():
+            txtrecibido.delete("1.0",END)
+            x=random.randint(1000000,99999999)
+            randomRef=str(x)
+            global url
+            url=int(randomRef)
+            Recibo_Ref.set("URL"+randomRef)
+
+            txtrecibido.insert(END,"Recibo RUC:\t\t\t"+Recibo_Ref.get()+"\t\t"+date.get()+"\n")
+            txtrecibido.insert(END,"ITEMS:\t\t\t\t\t"+"Costo de items \n\n")
+            txtrecibido.insert(END,"Jugo de Mango:\t\t\t\t"+E_Mango.get()+"\n")
+            txtrecibido.insert(END,"Jugo de Piña:\t\t\t\t"+E_piña.get()+"\n")
+            txtrecibido.insert(END,"Jugo de Fresa:\t\t\t\t"+E_fresa.get()+"\n")
+            txtrecibido.insert(END,"Jugo de Papaya:\t\t\t\t"+E_papaya.get()+"\n")
+            txtrecibido.insert(END,"Jugo de Plátano:\t\t\t\t"+E_platano.get()+"\n")
+            txtrecibido.insert(END,"Jugo de Kiwi:\t\t\t\t"+E_kiwi.get()+"\n")
+            txtrecibido.insert(END,"Surtido:\t\t\t\t"+E_surtido.get()+"\n")
+            txtrecibido.insert(END,"Especial:\t\t\t\t"+E_especial.get()+"\n")
+            txtrecibido.insert(END,"Pastel de chocolate:\t\t\t\t"+E_choco.get()+"\n")
+            txtrecibido.insert(END,"Pie de manzana/durazno:\t\t\t\t"+E_pie.get()+"\n")
+            txtrecibido.insert(END,"Hamburguesa:\t\t\t\t"+E_hamb.get()+"\n")
+            txtrecibido.insert(END,"Sandwich de pollo:\t\t\t\t"+E_sand.get()+"\n")
+            txtrecibido.insert(END,"Bolognesa:\t\t\t\t"+E_bolog.get()+"\n")
+            txtrecibido.insert(END,"Pie acaramelado de Piña:\t\t\t\t"+E_piñas.get()+"\n")
+            txtrecibido.insert(END,"Ensalada de fruta:\t\t\t\t"+E_fruta.get()+"\n")
+            txtrecibido.insert(END,"Menu del dia:\t\t\t\t"+E_menu.get()+"\n")
+            txtrecibido.insert(END,"Costos de bebidas:\t\t"+Costodrink.get()+ "\tIGV:\t\t"+PaidTax.get()+"\n")
+            txtrecibido.insert(END,"Costos de aperitivos:\t\t"+Costotorta.get()+ "\tSub Total:\t\t"+SubTotal.get()+"\n")
+            txtrecibido.insert(END,"Cargo por servicios:\t\t"+Serviciocargo.get()+ "\tCosto Total:\t\t"+Totalcost.get()+"\n")
+
+        urlconsulta= Entry(f1ab,font=("arial",16,"bold"),bd=8,width=6,justify="left", textvariable=E_choco,state= DISABLED)
+        btnRecibo=Button(fb2, padx=16,pady=1,bd=4,fg="black",font=("arial",14,"bold"), width=4, text="Data",command=DATA).grid(row=0, column=1)
 
     def estadisticas():
         salida2=ms.askyesno("Saliendo del sistema", "¿Quieres salir del programa?")
@@ -493,7 +506,7 @@ def abrirventana2():
     txtrecibido.grid(row=1,column=0)
 #----------------------
     btnTotal=Button(fb2, padx=16,pady=1,bd=4,fg="black",font=("arial",14,"bold"), width=4, text="Total",command=COSTOITEM).grid(row=0, column=0)
-    btnRecibo=Button(fb2, padx=16,pady=1,bd=4,fg="black",font=("arial",14,"bold"), width=4, text="Recibo",command=RECIBO).grid(row=0, column=1)
+    btnRecibo=Button(fb2, padx=16,pady=1,bd=4,fg="black",font=("arial",14,"bold"), width=4, text="Data",command=DATA).grid(row=0, column=1)
     btnReset=Button(fb2, padx=16,pady=1,bd=4,fg="black",font=("arial",14,"bold"), width=4, text="Nuevo",command=reset).grid(row=0, column=2)
     btnExit=Button(fb2, padx=16,pady=1,bd=4,fg="black",font=("arial",14,"bold"), width=4, text="Salir", command=salida).grid(row=0, column=3)
 
@@ -520,6 +533,8 @@ def abrirventana2():
 
     root2.mainloop()
 
+def abrirventana3():
+        return
 
 class main:
     def __init__(self,master):
